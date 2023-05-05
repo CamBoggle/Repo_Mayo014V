@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" type="text/css" href="css/bootstrap.min.css">
+    <script>
+        let url = 'https://jsonplaceholder.typicode.com/posts'
+        fetch(url)
+            .then(response => response.json())
+            .then(data => mostrarData(data))
+            .catch(error => console.log(error))
+
+        const mostrarData=(data)=>{
+            console.log(data)
+            let body=""
+            for(var i=0; i<data.length; i++) /*For para recorrer el arreglo de la API*/
+            {
+                if(data[i].userId = 2){
+                    body+=`<tr> 
+                        <td>${data[i].userId}</td>
+                        <td>${data[i].id}</td>
+                        <td><p class="estiloTitulo">${data[i].title}</p></td>
+                        <td><p class="estiloLetra">${data[i].body}</p></td>
+                        </tr>`
+                }
+            }
+            document.getElementById('data').innerHTML=body;
+        }
+
+    </script>
+    <style>
+        .estiloLetra{
+            color: blue;
+            padding: 10px;
+            font-family: 'serif';
+        }
+
+        .estiloTitulo{
+            font-weight: bold;
+            padding: 10px;
+            font-family: 'sans-serif';
+        }
+    </style>
+    <title>Api Post</title>
+</head>
+<body>
+    <div class="container">
+        <h2>Api Post</h2>
+        <table class="table">
+            <thead>
+                <tr>
+                    <th>ID de Usuario</th>
+                    <th>ID</th>
+                    <th>Titulo</th>
+                    <th>Cuerpo</th>
+                </tr>
+            </thead>
+            <tbody id="data">
+
+            </tbody>
+        </table>
+    </div>
+</body>
+</html>
